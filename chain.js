@@ -20,24 +20,18 @@ class chain{
         this.chain = [this.begin_chain()];
     }
     begin_chain() {
-        return new block(0, "01.02.2019", "FIRST BLOCK", "");
+        return new block(0, Date(), "FIRST BLOCK", "");
     }
     last_block() {
         return this.chain[(this.chain.length) - 1];
     }
-    create_block(new_block) {
+    create_block(new_block,input_data) {
         new_block.prevblock_stamp = this.last_block().stamp;
         new_block.stamp = new_block.stamp_it();
+        new_block.block_time = Date();
+        new_block.block_index = this.chain.length;
+        new_block.block_data = input_data;
 
         this.chain.push(new_block);
     }
 }
-
-let test_chain = new chain();
-test_chain.create_block(new block(1, "02.02.2019", "random_data"));
-test_chain.create_block(new block(2, "02.02.2019", "random_data"));
-test_chain.create_block(new block(3, "02.02.2019", "random_data"));
-
-inspect_chain = (JSON.stringify(test_chain));
-
-console.log(test_chain);
