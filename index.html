@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <div class="block_creator">
-            <form>
-                <input type="text" id="block_data">
-                <input type="button" value="Create Block" onclick="block_creation()">
-            </form>
-        </div>
-        <script src="chain.js"></script>
-        <script src="script.js"></script>
+        <header class="top_bar">
+            <div class="logo">
+                BLOCKCHAIN SANDBOX
+            </div>
+            <div class="menu_button" id="menu_button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+        <main>
+            <div class="create_tool">
+                <div class="create_icon" id="create_icon"></div>
+                <div class="block_creator" id="block_creator">
+                    <li>
+                        <button>New chain</button>
+                    </li>
+                    <li>
+                        <button>Side chain</button>
+                    </li>
+                    <li>
+                        <button onclick="block_creation()">Create</br>empty block</button>
+                    </li>
+                    <li>
+                        <button onclick="block_creation()">Create block</br>with custom data</button>
+                    </li>
+                    <li>
+                        <button>Create multiple</br>blocks</button>
+                    </li>
+                </div>
+            </div>
+        </main>
+            <script src="chain.js"></script>
+            <script src="script.js"></script>
     </body>
 </html>
