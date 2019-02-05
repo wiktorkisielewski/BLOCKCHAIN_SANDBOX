@@ -13,25 +13,45 @@
                 <span></span>
                 <span></span>
             </div>
+            <div class="menu" id="menu">
+                <li>
+                    <span class="menu_font">BASICS</span>
+                </li>
+                <li>
+                    <span class="menu_font">HOW TO</span>
+                </li>
+                <li>
+                    <span class="menu_font">ABOUT</br>HASHING</span>
+                </li>
+                <li>
+                    <span class="menu_font">EXPLORE</br> MORE</span>
+                </li>
+            </div>
         </header>
         <main>
             <div class="create_tool">
                 <div class="create_icon" id="create_icon"></div>
                 <div class="block_creator" id="block_creator">
                     <li>
-                        <button>New chain</button>
+                        <button id="newchain_button">New chain</button>
                     </li>
                     <li>
-                        <button>Side chain</button>
+                        <button id="sidechain_button">Side chain</button>
                     </li>
                     <li>
-                        <button onclick="block_creation()">Create</br>empty block</button>
+                        <button id="merge_button">Merge chains</button>
                     </li>
                     <li>
-                        <button onclick="block_creation()">Create block</br>with custom data</button>
+                        <button id="block_button" onclick="block_creation()">Create</br>empty block</button>
                     </li>
                     <li>
-                        <button>Create multiple</br>blocks</button>
+                        <button  id="data_button" onclick="block_creation()">Create block</br>with custom data</button>
+                    </li>
+                    <li>
+                        <button id="multiple_button">Create multiple</br>blocks</button>
+                    </li>
+                    <li>
+                        <div class="instruction_box" id="instruction_box"></div>
                     </li>
                 </div>
             </div>
