@@ -36,7 +36,10 @@ class chain{
         new_block.block_time = Date();
         new_block.block_index = this.chain.length;
         new_block.block_data = input_data;
-      /*  new_block.stamp = new_block.stamp_it(); */
+
+
+        new_block.stamp = new_block.stamp_it();
+
 
         this.chain.push(new_block);
     }
@@ -51,6 +54,7 @@ String.prototype.hash_it = function () {
         }
     }
     return hash;
+
 }
 
 test_chain = new chain;
@@ -65,3 +69,6 @@ function block_creation(input_data) {
 inspect_chain = (JSON.stringify(test_chain));
 
 console.log(test_chain);
+
+}
+
