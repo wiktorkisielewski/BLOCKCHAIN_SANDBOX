@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
     list-style: none;
+    z-index: 10;
 }
 .top_bar {
     position: fixed;
@@ -146,6 +147,7 @@ footer {
     right: 0;
     text-align: center;
     box-shadow: 10px -2px 15px rgba(136, 136, 136, 0.651);
+    background-color: #fff
 }
 .footer_text {
     font-size: 14px;
@@ -160,9 +162,11 @@ footer {
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 0;
-    top: 0;
-    visibility: hidden;
+    bottom: 100%;
+    top: -100%;
+    background-color: rgba(224, 224, 224, 0.589);
+    border-bottom: 1px solid #000;
+    z-index: 1;
 }
 .info_text {
     position: absolute;
@@ -174,4 +178,28 @@ footer {
     text-align: left;
     transform: translate(-50%, -50%);
     white-space: pre-line;
+}
+.block {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: max-content;
+    width: max-content;
+    transform: translate(-50%, -50%);
+    border: 4px solid #000;
+    padding:  0 20px 20px 20px;
+    font-size: 20px
+}
+.block div {
+    margin: 5px
+}
+.block_part {
+    font-size: 12px
+}
+.block_index {
+    position: relative;
+    top: -20px;
+    width: max-content;
+    padding: 0 5px;
+    background-color: #fff;
 }

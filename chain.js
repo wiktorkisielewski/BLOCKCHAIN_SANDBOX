@@ -15,7 +15,7 @@ class block {
         var data = (this.block_data).toString();
         var prev = (this.prevblock_stamp).toString();
 
-        var stamp = ((((index.hash_it()) * time.hash_it()) * data.hash_it()) * prev.hash_it()).toString(2);
+        var stamp = ((((index.hash_it()) * time.hash_it()) * data.hash_it()) * prev.hash_it()).toString(16);
 
         return stamp;
     }
@@ -36,7 +36,7 @@ class chain{
         new_block.block_time = Date();
         new_block.block_index = this.chain.length;
         new_block.block_data = input_data;
-        new_block.stamp = new_block.stamp_it();
+      /*  new_block.stamp = new_block.stamp_it(); */
 
         this.chain.push(new_block);
     }
