@@ -45,6 +45,10 @@ class chain{
         new_block.block_data = input_data;
         new_block.stamp = new_block.stamp_it(); 
 
+
+        new_block.stamp = new_block.stamp_it();
+
+
         this.chain.push(new_block);
     }
 }
