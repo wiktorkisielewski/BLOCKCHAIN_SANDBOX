@@ -10,17 +10,14 @@ menu = document.getElementById('menu');
 info_box = document.getElementById('info_box');
 info_text = document.getElementById('info_text');
 basics = document.getElementById('basics');
-how_to = document.getElementById('how_to');
 about_hash = document.getElementById('about_hash');
 explore_more = document.getElementById('explore_more');
-
 
 newchain_button = document.getElementById('newchain_button');
 sidechain_button = document.getElementById('sidechain_button');
 merge_button = document.getElementById('merge_button');
 block_button = document.getElementById('block_button');
 data_button = document.getElementById('data_button');
-multiple_button = document.getElementById('multiple_button');
 
 input_data = document.createElement('div');
 input_data.innerHTML = '<div id="data"><input type="text" id="block_data"><input id="submit_data" type="button" value="Create Block" onclick="data_flag();spawn_block()"></div>';
@@ -32,6 +29,7 @@ menu_flag = 0;
 info_flag = 0;
 creation_flag = 0;
 sidechain_flag = 0;
+newchain_flag = 0;
 
 /* var i = 0;
 function type_it() {
@@ -82,7 +80,13 @@ menu_button.addEventListener('click', function (e) {
     }
 },false);
 
-
+setInterval(function () {
+    if (newchain_flag != 0) {
+        block_button.disabled = false;
+        data_button.disabled = false;
+        sidechain_button.disabled = true;
+    }
+},1);
 
 basics.addEventListener('click', function (e) {
     e.stopPropagation();
@@ -143,6 +147,7 @@ newchain_button.addEventListener('click', function (e) {
     blocks.innerHTML = '';
     counter = 0;
     spawn_block();
+    newchain_flag += 1;
 }, false);
 
 sidechain_button.addEventListener('mouseover', function (e) {
@@ -196,18 +201,6 @@ data_button.addEventListener('click', function (e) {
     e.stopPropagation();
     document.body.appendChild(input_data);
     data.style.visibility = 'visible';
-}, false);
-
-
-multiple_button.addEventListener('mouseover', function (e) {
-    e.stopPropagation();
-    instruction_box.style.visibility = 'visible';
-    instruction_box.innerHTML = 'Creates multiple blocks, each containing index, timestamp and hashes';
-}, false);
-multiple_button.addEventListener('mouseout', function (e) {
-    e.stopPropagation();
-    instruction_box.style.visibility = 'hidden';
-    instruction_box.innerHTML = '';
 }, false);
 
 }());
