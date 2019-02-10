@@ -1,12 +1,20 @@
-counter = 0;
+counter = 1;
 
 function spawn_block() {
     blocks = document.getElementById('blocks');
-    block_creation();
     let block = document.createElement('div');
     let prev_hash = test_chain.chain[counter].prevblock_stamp;
     let block_time = test_chain.chain[counter].block_time;
-    let block_data = test_chain.chain[counter].block_data;
+    function input_data() {
+        var input = document.getElementById('block_data').value;
+        return input;
+    };
+    if (input_flag != 0) {
+        block_data = input_data();
+    } else {
+        block_data = test_chain.chain[counter].block_data;
+    }
+        
     let block_hash = test_chain.chain[counter].stamp;
     html = `<div class='block_index' id='block_index` + counter + `'>BLOCK ` + counter + `</div>
         <div class='prev_hash'>
@@ -32,13 +40,17 @@ function spawn_block() {
     blocks.appendChild(block);
 }
 
-zoom_param = 1;
+let zoom_param = 1;
 function zoom_out() {
-    blocks.style.transform = 'scale(' + zoom_param + ')';
-    zoom_param -= 0.01;
+    if (zoom_param >= 0.05) {
+        blocks.style.transition = 400 + 'ms';
+        blocks.style.transform = 'scale(' + zoom_param + ')';
+        zoom_param -= 0.05;
+    }    
 }
 function zoom_in() {
+    blocks.style.transition = 400 + 'ms';
     blocks.style.transform = 'scale(' + zoom_param + ')';
-    zoom_param += 0.01;
+    zoom_param += 0.05;
 }
 

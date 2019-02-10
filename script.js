@@ -2,6 +2,7 @@
 
 create_button = document.getElementById('create_icon');
 block_creator = document.getElementById('block_creator');
+blocks = document.getElementById('blocks');
 
 menu_button = document.getElementById('menu_button');
 menu = document.getElementById('menu');
@@ -20,6 +21,10 @@ merge_button = document.getElementById('merge_button');
 block_button = document.getElementById('block_button');
 data_button = document.getElementById('data_button');
 multiple_button = document.getElementById('multiple_button');
+
+input_data = document.createElement('div');
+input_data.innerHTML = '<div id="data"><input type="text" id="block_data"><input id="submit_data" type="button" value="Create Block" onclick="data_flag();spawn_block()"></div>';
+data_back = document.getElementById('data_back');
 
 instruction_box = document.getElementById('instruction_box');
 
@@ -77,6 +82,8 @@ menu_button.addEventListener('click', function (e) {
     }
 },false);
 
+
+
 basics.addEventListener('click', function (e) {
     e.stopPropagation();
             text= " Blockchain was invented by Satoshi Nakamoto in 2008 to serve as the public transaction ledger of the cryptocurrency bitcoin. \n \n Wikipedia definition: \n A blockchain, originally block chain, is a growing list of records,called blocks, which are linked using cryptography. Each block contains a cryptographic hash of the previous block, a timestamp, and custom data. \n \n From this website author: \n Blockchain - not only a cumulative/escalating database, but a decentralized system which verifies information given to the network, through nodes heading to a compatible consensus and (at the end) saving it in as a marked block in an immutable database. \n ";
@@ -96,6 +103,14 @@ create_button.addEventListener('click', function (e) {
         block_creator.style.left = -4 + 'px';
         creation_flag += 1;
     } else {
+        block_creator.style.transition = 400 + 'ms';
+        block_creator.style.left = -200 + 'px';
+        creation_flag -= 1;
+    }
+}, false);
+
+document.body.addEventListener('click', function(e) {
+    if (creation_flag != 0) {
         block_creator.style.transition = 400 + 'ms';
         block_creator.style.left = -200 + 'px';
         creation_flag -= 1;
@@ -122,6 +137,12 @@ newchain_button.addEventListener('mouseout', function (e) {
     e.stopPropagation();
     instruction_box.style.visibility = 'hidden';
     instruction_box.innerHTML = '';
+}, false);
+newchain_button.addEventListener('click', function (e) {
+    e.stopPropagation();
+    blocks.innerHTML = '';
+    counter = 0;
+    spawn_block();
 }, false);
 
 sidechain_button.addEventListener('mouseover', function (e) {
@@ -171,6 +192,12 @@ data_button.addEventListener('mouseout', function (e) {
     instruction_box.style.visibility = 'hidden';
     instruction_box.innerHTML = '';
 }, false);
+data_button.addEventListener('click', function (e) {
+    e.stopPropagation();
+    document.body.appendChild(input_data);
+    data.style.visibility = 'visible';
+}, false);
+
 
 multiple_button.addEventListener('mouseover', function (e) {
     e.stopPropagation();

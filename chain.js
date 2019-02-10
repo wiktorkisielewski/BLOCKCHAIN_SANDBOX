@@ -6,20 +6,25 @@ class block {
         this.block_time = block_time;
         this.block_data = block_data;
         this.prevblock_stamp = prevblock_stamp;
-        this.stamp = "";
+        this.stamp = "0000000000000000";
     }
 
     stamp_it() {
         var index = (this.block_index).toString();
         var time = (this.block_time).toString();
         if (typeof block_data == 'undefined') {
-            var data = '';
+            var data = ''.toString();
         } else {
-            var data = (this.block_data).toString();
+            var data = input_data.toString();
         };
         var prev = (this.prevblock_stamp).toString();
 
-        var stamp = ((((index.hash_it()) * time.hash_it()) * data.hash_it()) * prev.hash_it()).toString(16);
+        var stamp = (((((index.hash_it()) * 4 )* time.hash_it()) * 75 *data.hash_it()) * prev.hash_it()).toString(16);
+        if (stamp.length <= 16) {
+            stamp = ('0'.repeat(16 - stamp.length) + stamp).toString(16);
+        } else {
+            stamp = stamp.substring(stamp.length - 16);
+        }
 
         return stamp;
     }
@@ -45,10 +50,6 @@ class chain{
         new_block.block_data = input_data;
         new_block.stamp = new_block.stamp_it(); 
 
-
-        new_block.stamp = new_block.stamp_it();
-
-
         this.chain.push(new_block);
     }
 }
@@ -66,10 +67,25 @@ String.prototype.hash_it = function () {
 
 test_chain = new chain;
 
-var input_data = document.getElementById('block_data');
-
-function block_creation(input_data) {
-    test_chain.create_block(new block,input_data);
+input_flag = 0;
+function data_flag() {
+    input_flag += 1;
+    setTimeout(function () {
+        input_flag += 1;
+        document.body.removeChild(input_data);
+    }, 10);
+}
+function block_creation() {
+    if (input_flag != 0) {
+        function input_data() {
+            var input = document.getElementById('block_data').value;
+            return input;
+        };
+        input_data();
+        test_chain.create_block(new block,input_data());
+    } else {
+        test_chain.create_block(new block, '');
+    }
 };
 
 inspect_chain = (JSON.stringify(test_chain));
