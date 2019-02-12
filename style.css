@@ -105,6 +105,12 @@
     transform: scale(1.05);
     transition: 300ms
 }
+#side_block_button {
+    display: none;
+}
+#side_data_button {
+    display: none;
+}
 .instruction_box {
     visibility: hidden;
     width: 180px;

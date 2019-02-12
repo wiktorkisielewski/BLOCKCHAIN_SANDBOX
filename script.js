@@ -84,7 +84,7 @@ setInterval(function () {
     if (newchain_flag != 0) {
         block_button.disabled = false;
         data_button.disabled = false;
-        sidechain_button.disabled = true;
+        sidechain_button.disabled = false;
     }
 },1);
 
@@ -130,6 +130,10 @@ sidechain_button.addEventListener('click', function (e) {
         merge_button.style.opacity = 0.5;
         sidechain_flag -= 1;
     }
+    side_block_button = document.getElementById('side_block_button');
+    side_data_button = document.getElementById('side_data_button');
+    side_block_button.style.display = 'block';
+    side_data_button.style.display = 'block';
 }, false);
 
 newchain_button.addEventListener('mouseover', function (e) {
@@ -159,6 +163,10 @@ sidechain_button.addEventListener('mouseout', function (e) {
     e.stopPropagation();
     instruction_box.style.visibility = 'hidden';
     instruction_box.innerHTML = '';
+}, false);
+sidechain_button.addEventListener('click', function (e) {
+    e.stopPropagation();
+    sidechain_creation();
 }, false);
 
 merge_button.addEventListener('mouseover', function (e) {

@@ -3,8 +3,8 @@ counter = 1;
 function spawn_block() {
     blocks = document.getElementById('blocks');
     let block = document.createElement('div');
-    let prev_hash = test_chain.chain[counter].prevblock_stamp;
-    let block_time = test_chain.chain[counter].block_time;
+    let prev_hash = main_chain.chain[counter].prevblock_stamp;
+    let block_time = main_chain.chain[counter].block_time;
     function input_data() {
         var input = document.getElementById('block_data').value;
         return input;
@@ -12,10 +12,10 @@ function spawn_block() {
     if (input_flag != 0) {
         block_data = input_data();
     } else {
-        block_data = test_chain.chain[counter].block_data;
+        block_data = main_chain.chain[counter].block_data;
     }
         
-    let block_hash = test_chain.chain[counter].stamp;
+    let block_hash = main_chain.chain[counter].stamp;
     html = `<div class='block_index' id='block_index` + counter + `'>BLOCK ` + counter + `</div>
         <div class='prev_hash'>
             <span class='block_part'>PREVIOUS BLOCK HASH:</span><br>`
@@ -39,6 +39,8 @@ function spawn_block() {
     block.innerHTML = html;
     blocks.appendChild(block);
 }
+
+
 
 let zoom_param = 1;
 function zoom_out() {
