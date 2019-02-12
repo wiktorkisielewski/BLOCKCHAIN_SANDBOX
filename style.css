@@ -183,32 +183,50 @@ footer {
     transform: translate(-50%, -50%);
     white-space: pre-line;
 }
-#blocks {
+#chains {
     position: fixed;
-    z-index: 1;
     top: 70px;
     bottom: 20px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+#blocks {
+    position: relative;
+    z-index: 1;
+    top: 0;
+    height: 100%;
     left: 0;
     right: 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
+    
+}
+#side_blocks {
+    position: relative;
+    z-index: 1;
+    bottom: 20px;
+    height: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 .block {
     z-index: 1;
     display: inline-block;
-    min-height: 200px;
-    min-width: 240px;
-    max-width: max-content;
-    max-height: max-content;
+    height: 200px;
+    width: 240px;
     border: 4px solid #000;
     padding:  0 10px 10px 10px;
     font-size: 16px;
     position: relative;
-    top: 50%;
+    top: 40%;
     transform: translate(0%, -50%);
     margin: 15px
 }

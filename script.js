@@ -18,6 +18,8 @@ sidechain_button = document.getElementById('sidechain_button');
 merge_button = document.getElementById('merge_button');
 block_button = document.getElementById('block_button');
 data_button = document.getElementById('data_button');
+side_block_button = document.getElementById('side_block_button');
+side_data_button = document.getElementById('side_data_button');
 
 input_data = document.createElement('div');
 input_data.innerHTML = '<div id="data"><input type="text" id="block_data"><input id="submit_data" type="button" value="Create Block" onclick="data_flag();spawn_block()"></div>';
@@ -123,17 +125,11 @@ document.body.addEventListener('click', function(e) {
 
 sidechain_button.addEventListener('click', function (e) {
     e.stopPropagation();
-    if (sidechain_flag == 0) {
-        sidechain_flag += 1;
-        merge_button.style.opacity = 1;
-    } else {
-        merge_button.style.opacity = 0.5;
-        sidechain_flag -= 1;
-    }
-    side_block_button = document.getElementById('side_block_button');
-    side_data_button = document.getElementById('side_data_button');
+    sidechain_creation();
+    console.log(side_chain);
     side_block_button.style.display = 'block';
     side_data_button.style.display = 'block';
+    blocks.style.height = '50%';
 }, false);
 
 newchain_button.addEventListener('mouseover', function (e) {
@@ -149,7 +145,7 @@ newchain_button.addEventListener('mouseout', function (e) {
 newchain_button.addEventListener('click', function (e) {
     e.stopPropagation();
     blocks.innerHTML = '';
-    counter = 0;
+    main_counter = 0;
     spawn_block();
     newchain_flag += 1;
 }, false);
@@ -163,10 +159,6 @@ sidechain_button.addEventListener('mouseout', function (e) {
     e.stopPropagation();
     instruction_box.style.visibility = 'hidden';
     instruction_box.innerHTML = '';
-}, false);
-sidechain_button.addEventListener('click', function (e) {
-    e.stopPropagation();
-    sidechain_creation();
 }, false);
 
 merge_button.addEventListener('mouseover', function (e) {
@@ -194,6 +186,23 @@ block_button.addEventListener('click', function (e) {
     e.stopPropagation();
     spawn_block();
 }, false);
+
+side_block_button.addEventListener('mouseover', function (e) {
+    e.stopPropagation();
+    instruction_box.style.visibility = 'visible';
+    instruction_box.innerHTML = 'Creates a basic type of block [it will contain only index, timestamp and two hashes]';
+}, false);
+side_block_button.addEventListener('mouseout', function (e) {
+    e.stopPropagation();
+    instruction_box.style.visibility = 'hidden';
+    instruction_box.innerHTML = '';
+}, false);
+side_block_button.addEventListener('click', function (e) {
+    e.stopPropagation();
+    spawn_sideblock();
+}, false);
+
+
 
 data_button.addEventListener('mouseover', function (e) {
     e.stopPropagation();

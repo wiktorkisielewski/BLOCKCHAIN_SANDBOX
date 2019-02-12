@@ -75,7 +75,7 @@ class side_chain{
         new_sideblock.block_data = input_data;
         new_sideblock.stamp = new_sideblock.stamp_it(); 
 
-        side_chain.push(new_sideblock);
+        this.side_chain.push(new_sideblock);
     }
 }
 
@@ -118,7 +118,7 @@ function sidechain_creation() {
     side_chain = new side_chain;
 }
 function sideblock_creation() {
-    side_chain.create_block(new block, '');
+    side_chain.create_sideblock(new block, '');
 }
 
 inspect_chain = (JSON.stringify(main_chain));
