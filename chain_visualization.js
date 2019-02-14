@@ -41,6 +41,7 @@ function spawn_block() {
     blocks.appendChild(block);
 }
 
+position_flag = 0;
 function spawn_sideblock() {
     side_blocks = document.getElementById('side_blocks');
     let block = document.createElement('div');
@@ -74,24 +75,31 @@ function spawn_sideblock() {
             <span class='block_part'>HASH:</span><br>`
             + block_hash +
         `</div>`;
-    block.id = 'block' + side_counter;
+    block.id = 'side_block' + side_counter;
+    
     side_counter += 1;
     block.classList.add('block');
     block.innerHTML = html;
+    if (position_flag == 0) {
+        side_blocks.style.left = (document.getElementById('blocks').lastChild).offsetLeft + 284 + 'px'; 
+        position_flag += 1;
+    }
     side_blocks.appendChild(block);
 }
 
 
 
+
+chains = document.getElementById("chains");
 let zoom_param = 1;
 function zooming_out(on_off) {
     if (on_off == 0) {
-        if (zoom_param >> 0) {
+        if (zoom_param >= 0.1) {
         zoom_out = setInterval(function() {
-                blocks.style.transition = 400 + 'ms';
-                blocks.style.transform = 'scale(' + zoom_param + ')';
+                chains.style.transition = 50 + 'ms';
+                chains.style.transform = 'scale(' + zoom_param + ')';
                 zoom_param -= 0.01;
-            }, 30);
+            }, 50);
         }
     } else {
         clearInterval(zoom_out);
@@ -100,10 +108,10 @@ function zooming_out(on_off) {
 function zooming_in(on_off) {
     if (on_off == 0) {
         zoom_in = setInterval(function() {
-                blocks.style.transition = 400 + 'ms';
-                blocks.style.transform = 'scale(' + zoom_param + ')';
+                chains.style.transition = 50 + 'ms';
+                chains.style.transform = 'scale(' + zoom_param + ')';
                 zoom_param += 0.01;
-            }, 30);
+            }, 50);
     } else {
         clearInterval(zoom_in);
     }

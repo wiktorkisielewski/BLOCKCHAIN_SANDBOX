@@ -3,6 +3,7 @@
 create_button = document.getElementById('create_icon');
 block_creator = document.getElementById('block_creator');
 blocks = document.getElementById('blocks');
+side_blocks = document.getElementById('side_blocks');
 
 menu_button = document.getElementById('menu_button');
 menu = document.getElementById('menu');
@@ -129,8 +130,9 @@ sidechain_button.addEventListener('click', function (e) {
     console.log(side_chain);
     side_block_button.style.display = 'block';
     side_data_button.style.display = 'block';
-    blocks.style.height = '50%';
 }, false);
+
+
 
 newchain_button.addEventListener('mouseover', function (e) {
     e.stopPropagation();
@@ -144,10 +146,14 @@ newchain_button.addEventListener('mouseout', function (e) {
 }, false);
 newchain_button.addEventListener('click', function (e) {
     e.stopPropagation();
-    blocks.innerHTML = '';
-    main_counter = 0;
-    spawn_block();
-    newchain_flag += 1;
+    if (newchain_flag == 0) {
+        blocks.innerHTML = '';
+        main_counter = 0;
+        spawn_block();
+        newchain_flag += 1;
+    } else {
+        location = location;
+    }
 }, false);
 
 sidechain_button.addEventListener('mouseover', function (e) {
