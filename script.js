@@ -34,14 +34,7 @@ creation_flag = 0;
 sidechain_flag = 0;
 newchain_flag = 0;
 
-/* var i = 0;
-function type_it() {
-    if (i < text.length) {
-        info_text.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(type_it, 50);
-    }
-} */
+
 
 function show_info(text) {
     if (info_flag == 0) {

@@ -1,6 +1,15 @@
 main_counter = 1;
 side_counter = 1;
 
+var i = 0;
+function type_it(text) {
+    if (i < text.length) {
+        this.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type_it, 50);
+    }
+}; 
+
 function spawn_block() {
     blocks = document.getElementById('blocks');
     let block = document.createElement('div');
@@ -96,10 +105,12 @@ function zooming_out(on_off) {
     if (on_off == 0) {
         if (zoom_param >= 0.1) {
         zoom_out = setInterval(function() {
-                chains.style.transition = 50 + 'ms';
-                chains.style.transform = 'scale(' + zoom_param + ')';
-                zoom_param -= 0.01;
-            }, 50);
+                blocks.style.transition = 50 + 'ms';
+                blocks.style.zoom =  zoom_param;
+                side_blocks.style.transition = 50 + 'ms';
+                side_blocks.style.zoom =  zoom_param;
+                zoom_param -= 0.001;
+            }, 5);
         }
     } else {
         clearInterval(zoom_out);
@@ -108,10 +119,12 @@ function zooming_out(on_off) {
 function zooming_in(on_off) {
     if (on_off == 0) {
         zoom_in = setInterval(function() {
-                chains.style.transition = 50 + 'ms';
-                chains.style.transform = 'scale(' + zoom_param + ')';
-                zoom_param += 0.01;
-            }, 50);
+                blocks.style.transition = 50 + 'ms';
+                blocks.style.zoom =  zoom_param;
+                side_blocks.style.transition = 50 + 'ms';
+                side_blocks.style.zoom =  zoom_param;
+                zoom_param += 0.001;
+            }, 5);
     } else {
         clearInterval(zoom_in);
     }
