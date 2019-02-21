@@ -123,6 +123,7 @@ sidechain_button.addEventListener('click', function (e) {
     console.log(side_chain);
     side_block_button.style.display = 'block';
     side_data_button.style.display = 'block';
+    merge_button.disabled = false;
 }, false);
 
 
@@ -169,6 +170,10 @@ merge_button.addEventListener('mouseout', function (e) {
     e.stopPropagation();
     instruction_box.style.visibility = 'hidden';
     instruction_box.innerHTML = '';
+}, false);
+merge_button.addEventListener('click', function (e) {
+    e.stopPropagation();
+    merge();
 }, false);
 
 block_button.addEventListener('mouseover', function (e) {

@@ -41,7 +41,6 @@ class chain{
     last_block() {
         return this.chain[(this.chain.length) - 1];
     }
-    
     create_block(new_block, input_data) {
         new_block.prevblock_stamp = this.last_block().stamp;
         var birthday = new Date().format('ddd mmm dd yyyy HH:MM:ss');  
@@ -119,6 +118,13 @@ function sidechain_creation() {
 }
 function sideblock_creation() {
     side_chain.create_sideblock(new block, '');
+}
+
+function merge() {
+    let last_side = side_chain.side_chain[(side_chain.side_chain.length) - 1];
+    let last_main = main_chain.chain[(main_chain.chain.length) - 1];
+    main_chain.create_block(new block, 'Merged from:' + side_chain.side_chain[((side_chain.side_chain.length) - 1)].stamp);
+    spawn_block();
 }
 
 inspect_chain = (JSON.stringify(main_chain));
